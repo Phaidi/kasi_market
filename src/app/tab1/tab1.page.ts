@@ -1,0 +1,17 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-tab1',
+  templateUrl: 'tab1.page.html',
+  styleUrls: ['tab1.page.scss']
+})
+export class Tab1Page {
+
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
+  }
+
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  constructor() {}
+
+}

@@ -1,0 +1,7 @@
+{
+  "name": "kasi-online-market",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
