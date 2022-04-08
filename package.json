@@ -1,5 +1,5 @@
 {
-  "name": "kasi-online-market",
+  "name": "v3",
   "version": "0.0.1",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
@@ -13,16 +13,12 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~13.2.2",
-    "@angular/cdk": "^13.3.2",
     "@angular/common": "~13.2.2",
     "@angular/core": "~13.2.2",
     "@angular/forms": "~13.2.2",
-    "@angular/material": "^13.3.2",
     "@angular/platform-browser": "~13.2.2",
     "@angular/platform-browser-dynamic": "~13.2.2",
     "@angular/router": "~13.2.2",
-    "@capacitor/android": "3.4.3",
     "@capacitor/app": "1.1.1",
     "@capacitor/core": "3.4.3",
     "@capacitor/haptics": "1.1.4",
