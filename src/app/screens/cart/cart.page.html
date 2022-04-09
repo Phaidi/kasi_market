@@ -1,6 +1,10 @@
 <ion-content>
   <h3 class="tittle" *ngIf="(cartItems$|async).length">{{(cartItems$|async).length}} towards at cart</h3>
 
+  <div class="input">
+    <input #searchQ  (keyup)="search($event)" class="searchbar-search-icon" placeholder="Search your Code" name="searchQ">
+  </div>
+
   <ion-list lines="none">
     <ion-item-sliding *ngFor="let item of cartItems$|async">
       <ion-item>

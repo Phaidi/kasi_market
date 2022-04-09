@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { CartItem } from 'src/app/models/cart-item.model';
+import { Food } from 'src/app/models/food.model';
 import { CartService } from 'src/app/services/cart.service';
 
 @Component({
@@ -14,8 +15,13 @@ export class CartPage implements OnInit {
   cartItems$: Observable<CartItem[]>;
   totalAmount$: Observable<number>;
 
+  foods: Food[] = [];
+  tempF: Food[] = [];
+
   constructor(private cartService: CartService,
-    private alertCtrl: AlertController) { }
+    private alertCtrl: AlertController) {
+      this.tempF = this.foods;
+     }
 
   ngOnInit() {
     this.cartItems$ = this.cartService.getCart();
@@ -48,6 +54,18 @@ export class CartPage implements OnInit {
     });
 
     alert.present();
+  }
+
+  search(data){
+
+    const value = data.target.value;
+
+    this.foods = this.tempF;
+
+    const filter = this.foods.filter(el => el.title.toLowerCase().includes(value.toLowerCase()));
+
+    this.foods = filter;
+
   }
 
 }

@@ -41,7 +41,7 @@
           name="password" 
           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           [(ngModel)]="logForm.password"
-          required>>
+          required>
         </ion-input>
         </ion-item>
         <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
