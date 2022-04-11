@@ -24,10 +24,7 @@ export class DetailPage implements OnInit {
   };
 
   ngOnInit() {
-
-
     this.food = this.foodService.getFood(this.id);
-
   }
 
   addItemToCart() {

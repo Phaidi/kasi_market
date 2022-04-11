@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Observable } from 'rxjs';
@@ -67,5 +68,48 @@ export class CartPage implements OnInit {
     this.foods = filter;
 
   }
+
+   test1 = [
+    {
+      code: 123456,
+      order: [
+        {
+          id: 4,
+          title: 'Vase',
+          price: 320,
+          image: 'assets/images/i4.jpg',
+          description:
+            'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
+        }
+      ]
+    },
+    {
+      code: 123457,
+      order: [
+        {
+          id: 5,
+          title: 'Vase',
+          price: 320,
+          image: 'assets/images/i5.jpg',
+          description:
+            'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
+        }
+      ]
+    },
+    {
+      code: 123458,
+      order: [
+        {
+          id: 6,
+          title: 'Vase',
+          price: 320,
+          image: 'assets/images/i6.jpg',
+          description:
+            'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
+        }
+      ]
+    }
+
+  ];
 
 }
