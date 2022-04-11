@@ -16,60 +16,11 @@ export class CartPage implements OnInit {
   cartItems$: Observable<CartItem[]>;
   totalAmount$: Observable<number>;
 
-  foods: Food[] = [];
-  tempF: Food[] = [];
+  foods: any[] = [];
+  codeItems: any;
 
-  constructor(private cartService: CartService,
-    private alertCtrl: AlertController) {
-      this.tempF = this.foods;
-     }
-
-  ngOnInit() {
-    this.cartItems$ = this.cartService.getCart();
-    this.totalAmount$ = this.cartService.getTotalAmount();
-  }
-
-  onIncrease(item: CartItem) {
-    this.cartService.changeQty(1, item.id);
-  }
-
-  onDecrease(item: CartItem) {
-    if(item.quantity === 1) {this.removeFromCart(item);};
-    this.cartService.changeQty(-1, item.id);
-  }
-
-  async removeFromCart(item: CartItem) {
-    const alert = await this.alertCtrl.create({
-      header: 'Remove',
-      message: 'Are you sure you want to remove item',
-      buttons: [
-        {
-          text: 'yes',
-          //handler: () => this.cartService.removeItem(item.id),
-          handler: () =>this.cartService.removeItem(item.id),
-        },
-        {
-          text: 'No',
-        },
-      ],
-    });
-
-    alert.present();
-  }
-
-  search(data){
-
-    const value = data.target.value;
-
-    this.foods = this.tempF;
-
-    const filter = this.foods.filter(el => el.title.toLowerCase().includes(value.toLowerCase()));
-
-    this.foods = filter;
-
-  }
-
-   test1 = [
+  tempF: any[] = [];
+  test1 = this.tempF = [
     {
       code: 123456,
       order: [
@@ -112,4 +63,83 @@ export class CartPage implements OnInit {
 
   ];
 
+
+  constructor(private cartService: CartService,
+    private alertCtrl: AlertController) {
+      this.tempF = this.foods;
+     }
+
+  ngOnInit() {
+    this.cartItems$ = this.cartService.getCart();
+    this.totalAmount$ = this.cartService.getTotalAmount();
+  }
+
+  onIncrease(item: CartItem) {
+
+    this.cartService.changeQty(1, item.id);
+  }
+
+  onDecrease(item: CartItem) {
+    if(item.quantity === 1) {this.removeFromCart(item);};
+    this.cartService.changeQty(-1, item.id);
+  }
+
+  async removeFromCart(item: CartItem) {
+    const alert = await this.alertCtrl.create({
+      header: 'Remove',
+      message: 'Are you sure you want to remove item',
+      buttons: [
+        {
+          text: 'yes',
+          //handler: () => this.cartService.removeItem(item.id),
+          handler: () =>this.cartService.removeItem(item.id),
+        },
+        {
+          text: 'No',
+        },
+      ],
+    });
+
+    alert.present();
+  }
+
+  searchCode(data){
+
+    const value = data.target.value;
+
+    this.foods = this.tempF;
+
+    
+    const filter = this.test1.filter(el => el.code.toString() ==(value));
+    this.foods = filter;
+ 
+    if(value =='' || !filter){
+      this.foods = []
+      this.codeItems = [];
+    };
+  
+
+
+  }
+
+  getCodeProducts(code){
+    const filter = this.test1.find(el => el.code.toString()==code);
+
+    this.codeItems = filter.order;
+
+    // console.log('Hello',filter.order)
+
+  }
+
+  addToCart(order){
+    order[0].quantity = 1;
+    order[0].name = order[0].title;
+    // console.log(order[0])
+    this.cartService.addToCart(order[0])
+    this.cartItems$ = this.cartService.getCart();
+    this.totalAmount$ = this.cartService.getTotalAmount();
+
+  }
+
+  
 }
