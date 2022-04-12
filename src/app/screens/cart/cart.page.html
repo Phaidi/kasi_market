@@ -8,11 +8,15 @@
   <!-- Testing Code search -->
   <ion-list lines="none" *ngIf="foods.length > 0">
     <ion-item-sliding  *ngFor="let item of foods">
+      <ion-item>
+        {{item.code}} 
+      </ion-item>
       <ion-item (click)="getCodeProducts(item.code)">
-        {{item.code}}  
-        <app-button (click)="addToCart(item.order)">
+        <ion-item>
+          <app-button (click)="addToCart(item.order)">
           Add To Cart 
           </app-button>
+        </ion-item> 
       </ion-item>
       
       <!-- {{item | json }} -->

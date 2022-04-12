@@ -1,3 +1,5 @@
+/* eslint-disable no-trailing-spaces */
+/* eslint-disable @typescript-eslint/semi */
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
@@ -20,15 +22,16 @@ export class CartPage implements OnInit {
   codeItems: any;
 
   tempF: any[] = [];
+
   test1 = this.tempF = [
     {
       code: 123456,
       order: [
         {
-          id: 4,
-          title: 'Vase',
-          price: 320,
-          image: 'assets/images/i4.jpg',
+          id: 1,
+          title: 'Cordless Driller',
+          price: 1200,
+          image: 'assets/images/i1.png',
           description:
             'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
         }
@@ -38,26 +41,50 @@ export class CartPage implements OnInit {
       code: 123457,
       order: [
         {
-          id: 5,
-          title: 'Vase',
-          price: 320,
-          image: 'assets/images/i5.jpg',
+          id: 4,
+          title: 'Black Pearl',
+          price: 1200,
+          image: 'assets/images/i4.jpg',
           description:
             'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
-        }
+        },
+        {
+          id: 3,
+          title: 'Yeezy',
+          price: 1500,
+          image: 'assets/images/i3.png',
+          description:
+            'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
+        },
       ]
     },
     {
       code: 123458,
       order: [
         {
-          id: 6,
-          title: 'Vase',
-          price: 320,
-          image: 'assets/images/i6.jpg',
+          id: 3,
+          title: 'Yeezy',
+          price: 1500,
+          image: 'assets/images/i3.png',
           description:
             'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
-        }
+        },
+        {
+          id: 5,
+          title: 'Nike',
+          price: 1100,
+          image: 'assets/images/i5.jpg',
+          description:
+            'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
+        },
+        {
+          id: 4,
+          title: 'Black Pearl',
+          price: 1200,
+          image: 'assets/images/i4.jpg',
+          description:
+            'Rechargable driller with 18v ksjkhsjs isjdjkjsk skjdsdjj sk ksjdjskdksj ksjdkdkjskj',
+        },
       ]
     }
 
@@ -110,10 +137,10 @@ export class CartPage implements OnInit {
     this.foods = this.tempF;
 
     
-    const filter = this.test1.filter(el => el.code.toString() ==(value));
+    const filter = this.test1.filter(el => el.code.toString() ===(value));
     this.foods = filter;
  
-    if(value =='' || !filter){
+    if(value ==='' || !filter){
       this.foods = []
       this.codeItems = [];
     };
@@ -123,7 +150,7 @@ export class CartPage implements OnInit {
   }
 
   getCodeProducts(code){
-    const filter = this.test1.find(el => el.code.toString()==code);
+    const filter = this.test1.find(el => el.code.toString()===code);
 
     this.codeItems = filter.order;
 
