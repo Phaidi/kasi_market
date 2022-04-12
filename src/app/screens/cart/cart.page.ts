@@ -93,8 +93,8 @@ export class CartPage implements OnInit {
 
   constructor(private cartService: CartService,
     private alertCtrl: AlertController) {
-      this.tempF = this.foods;
-     }
+    this.tempF = this.foods;
+  }
 
   ngOnInit() {
     this.cartItems$ = this.cartService.getCart();
@@ -107,7 +107,7 @@ export class CartPage implements OnInit {
   }
 
   onDecrease(item: CartItem) {
-    if(item.quantity === 1) {this.removeFromCart(item);};
+    if (item.quantity === 1) { this.removeFromCart(item); };
     this.cartService.changeQty(-1, item.id);
   }
 
@@ -119,7 +119,7 @@ export class CartPage implements OnInit {
         {
           text: 'yes',
           //handler: () => this.cartService.removeItem(item.id),
-          handler: () =>this.cartService.removeItem(item.id),
+          handler: () => this.cartService.removeItem(item.id),
         },
         {
           text: 'No',
@@ -130,27 +130,27 @@ export class CartPage implements OnInit {
     alert.present();
   }
 
-  searchCode(data){
+  searchCode(data) {
 
     const value = data.target.value;
 
     this.foods = this.tempF;
 
-    
-    const filter = this.test1.filter(el => el.code.toString() ===(value));
+
+    const filter = this.test1.filter(el => el.code.toString() === (value));
     this.foods = filter;
- 
-    if(value ==='' || !filter){
+
+    if (value === '' || !filter) {
       this.foods = []
       this.codeItems = [];
     };
-  
+
 
 
   }
 
-  getCodeProducts(code){
-    const filter = this.test1.find(el => el.code.toString()===code);
+  getCodeProducts(code) {
+    const filter = this.test1.find(el => el.code === code);
 
     this.codeItems = filter.order;
 
@@ -158,15 +158,26 @@ export class CartPage implements OnInit {
 
   }
 
-  addToCart(order){
-    order[0].quantity = 1;
-    order[0].name = order[0].title;
-    // console.log(order[0])
-    this.cartService.addToCart(order[0])
+  addToCart(order) {
+
+    // console.log(order.length)
+    if (order.length > 1) {
+
+      order.forEach(el => {
+
+        el.quantity = 1;
+        el.name = el.title;
+        this.cartService.addToCart(el)
+      });
+    } else {
+      order[0].quantity = 1;
+      order[0].name = order[0].title;
+      this.cartService.addToCart(order[0])
+    }
     this.cartItems$ = this.cartService.getCart();
     this.totalAmount$ = this.cartService.getTotalAmount();
 
   }
 
-  
+
 }
